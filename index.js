@@ -27,6 +27,8 @@ const getOpportunity = (id) => {
 
             let opp = {};
             opp.id = id;
+            opp.specialistRole = getRowContents($, 'Specialist role');
+            opp.type = opp.specialistRole ? "Digital specialists":"Digital outcomes"; 
             opp.title = $('h1').text();
             opp.buyer = getBuyer($,'.govuk-caption-l');
             opp.completedApplications = getCompletedApplications($);

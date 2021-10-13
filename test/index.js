@@ -4,6 +4,7 @@ const opportunity = require('../index.js');
   
 const opportunityNo = 5767;
 const opportunityNo404 = 0;
+const opportunitySpecialist = 15779;
 
 opportunity.getOpportunity()
 .then((data) => console.log(data))
@@ -34,6 +35,32 @@ describe('#getOpportunity',function() {
             err.response.status.should.equal(404);
             done()
         })
+
+    });
+
+    it('opportunity type is digital specialists ', function(done) {
+
+
+        opportunity.getOpportunity(opportunitySpecialist)
+        .then(function (data) {
+            console.log(data)
+            data.type.should.equal("Digital specialists");
+            done()
+        })
+        .catch((err) => done(err))
+
+    });
+
+    it('opportunity type is digital outcomes', function(done) {
+
+
+        opportunity.getOpportunity(opportunityNo)
+        .then(function (data) {
+            console.log(data)
+            data.type.should.equal("Digital outcomes");
+            done()
+        })
+        .catch((err) => done(err))
 
     });
 });
