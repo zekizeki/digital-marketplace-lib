@@ -1,0 +1,25 @@
+{
+  "name": "digital-marketplace-lib",
+  "version": "1.0.0",
+  "description": "A library to help with scraping the GOV.UK Digital Marketplace as there is currently no API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "uk",
+    "gov",
+    "digital",
+    "marketplace"
+  ],
+  "author": "Rob Smart",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "cheerio": "^1.0.0-rc.10"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.2"
+  }
+}
