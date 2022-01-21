@@ -64,3 +64,19 @@ describe('#getOpportunity',function() {
 
     });
 });
+
+describe('#getOpportunityIds',function() {
+
+	it('gets the first page of opportunity ids ' + opportunityNo, function(done) {
+
+
+        opportunity.getAllDigitalOutcomeOpportunityIds(1)
+        .then( function(data) { 
+            console.log(data)
+            expect(data).to.be.an('array');
+            done()  
+        })
+        .catch((err) => done(err))
+
+    });
+});

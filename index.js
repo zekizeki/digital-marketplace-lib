@@ -18,6 +18,57 @@
  const cheerio = require('cheerio')
  const MARKETPLACE_URL = 'https://www.digitalmarketplace.service.gov.uk/digital-outcomes-and-specialists'
 
+/*
+const getAllOpportunities = (justOutcomes) => {
+  return new Promise((resolve,reject) => {
+
+    // get number of pages
+    if (justOutcomes) {
+      axios.get(MARKETPLACE_URL+'/opportunities?lot=digital-outcomes')
+    } else {
+      axios.get(MARKETPLACE_URL+'/opportunities')
+    }
+    // for each page get opportunity ids
+
+    // get each Opportunity.
+
+
+  })
+}
+*/
+const getAllDigitalOutcomeOpportunityIds = (maxPages) => {
+  return new Promise((resolve,reject) => {
+    let opportunities = [];
+    let page = 1;
+    
+    let getNextPage = () => {
+      return axios.get(MARKETPLACE_URL+'/opportunities?lot=digital-outcomes&page='+page)
+        .then(({ data }) => {
+          const $ = cheerio.load(data)
+          const $opportunities = $('.app-search-result');
+          $opportunities.each(function (index) {
+            
+            const $opportunity = $(this);
+            const $opportunityLink = $opportunity.find('.govuk-link');
+            const opportunityId = $opportunityLink.attr('href').split('/')[3];
+            
+            opportunities.push(opportunityId)
+          });
+          page++;
+          if (page <= maxPages) {
+            return getNextPage();
+          } else {
+            resolve(opportunities)
+          }
+        })
+        .catch((err) => reject(err))
+    }
+    getNextPage()
+  })
+}
+
+
+
 const getOpportunity = (id) => {
     return new Promise((resolve, reject) => {
 
@@ -113,5 +164,6 @@ const getTableList = function($,list){
 }
 
 module.exports = {
-    getOpportunity
+    getOpportunity,
+    getAllDigitalOutcomeOpportunityIds
 }

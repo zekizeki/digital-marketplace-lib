@@ -8,7 +8,7 @@ A library for retrieving DOS opportunities from https://www.digitalmarketplace.s
 
 To install it, use npm:
 
-npm install digital-marketplace-lib
+npm i digital-marketplace-lib
 
 
 ## The following methods are available
@@ -18,7 +18,7 @@ npm install digital-marketplace-lib
 
 ## examples
 
-
+**getOpportunity(opportunityNo)**
 
 ```javascript
 const DM = require('digital-marketplace-lib');
@@ -29,6 +29,78 @@ DM.getOpportunity(15704)
 .catch((err) => console.log(err.response.status))
 ```
 
+returns
+
+```
+{
+   "id":5767,
+   "specialistRole":"",
+   "type":"Digital outcomes",
+   "title":"DAC 056 – Data Science",
+   "buyer":"Home Office",
+   "completedApplications":"11",
+   "getIncompleteApplications":"7",
+   "published_date":"Thursday 23 November 2017",
+   "question_deadline":"Thursday 30 November 2017 at 11:59pm GMT",
+   "budget_range":"",
+   "location":"London",
+   "latest_start_date":"Monday 22 January 2018",
+   "expected_contract_length":"18 months",
+   "problem":"The supplier will bring expertise & experience in leading edge data science techniques.The supplier will work in small scrum teams delivering analytics work, typically running 4-8 projects in parallel.The supplier will bring expertise and experience in using leading edge analytical techniques and tools.  Identifying where there is opportunity to add value by introducing new techniques, and scanning developments in industry and academia.The supplier will work with business analysts, user researchers, product managers and customer product owners to ensure data products meet user needs The supplier will ensure the Analytical Quality Assurance of all analytics products they deliver",
+   "users":"There are two core sets of users:•End users of data analytics products, for whom data analytics offers an opportunity to transform their business or provide insight into policy or operational strategy•Civil servant data scientists with whom the supplier will be in close collaboration in delivery of data analytics products, but for whom knowledge transfer and support are key deliverables.",
+   "currentPhase":"Beta",
+   "clearance":"All staff must hold or be prepared to undergo SC Security Clearance to operate on this project. Some staff must hold or be prepared to undergo DV and/or NPVV3 clearance.",
+   "essential_skills":[
+      "Demonstrable skills of delivering data science products in to production using modern architectures (including with streaming data and relational & nosql databases) and open source tools (including Python, Spark).",
+      "Significant expertise in leading edge data science techniques, particularly machine learning, data linking, information retrieval, working with unsupervised data and data visualisation.",
+      "Demonstrable experience in successfully providing knowledge transfer to client teams.",
+      "Demonstrable experience of operating in a complex delivery environment, with experience of a significant contract within a large organisation in the last two years.",
+      "Business-focussed analysts, motivated to align delivery with the business strategy, with excellent client-facing and communications skills, and ability to quickly grasp business need and translate into analytical solutions.",
+      "Evidence of designing performance management (including valuing diversity and inclusion), resilience and capacity management into the service offering.",
+      "Understanding of digital service design based on the government digital service standards, with evidence of working in agile delivery and delivering into cloud-hosted platforms",
+      "Experience in delivering data analytics using Greenplum, Elastic, Neo4j, IBM BigMatch, Tensorflow, Spark MLib",
+      "Experience of working within a central government ICT environment"
+   ],
+   "nice_to_have_skills":[
+      "Demonstrable skills of delivering data science products in to production using modern architectures (including with streaming data and relational & nosql databases) and open source tools (including Python, Spark).",
+      "Significant expertise in leading edge data science techniques, particularly machine learning, data linking, information retrieval, working with unsupervised data and data visualisation.",
+      "Demonstrable experience in successfully providing knowledge transfer to client teams.",
+      "Demonstrable experience of operating in a complex delivery environment, with experience of a significant contract within a large organisation in the last two years.",
+      "Business-focussed analysts, motivated to align delivery with the business strategy, with excellent client-facing and communications skills, and ability to quickly grasp business need and translate into analytical solutions.",
+      "Evidence of designing performance management (including valuing diversity and inclusion), resilience and capacity management into the service offering.",
+      "Understanding of digital service design based on the government digital service standards, with evidence of working in agile delivery and delivering into cloud-hosted platforms",
+      "Experience in delivering data analytics using Greenplum, Elastic, Neo4j, IBM BigMatch, Tensorflow, Spark MLib",
+      "Experience of working within a central government ICT environment"
+   ],
+   "proposalCriteria":"Approach and methodology          Technical / analytical skills and experience          Service model          Mobilisation plan          A plan for optimising resources          Identification of risks and dependencies          A plan for knowledge transfer"
+}
+```
+
+
+**getAllDigitalOutcomeOpportunityIds(maxPages)**
+
+```javascript
+const DM = require('digital-marketplace-lib');
+
+DM.getAllDigitalOutcomeOpportunityIds(1)
+.then((data) => console.log(data))
+.catch((err) => console.log(err))
+```
+
+returns
+
+```
+[
+  '16039', '16157', '16132', '16112',
+  '15974', '16068', '16123', '16120',
+  '16093', '16092', '16053', '16049',
+  '16067', '16060', '15903', '16047',
+  '15438', '15806', '16046', '15611',
+  '16029', '16015', '15990', '16024',
+  '16014', '15967', '15897', '15901',
+  '15987', '15980'
+]
+```
 
 
 ### Tests
